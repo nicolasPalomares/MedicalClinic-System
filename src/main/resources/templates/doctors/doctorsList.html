@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      
+	<head>
+		<meta charset="UTF-8">
+		<title> [[#{index.title}]] </title>
+	</head>
+	<body>
+		<header th:replace="~{layout/layout :: header}"></header>
+		<br/>
+		<a th:href="@{/insertDoctor}"> [[#{actions.doctor.insert}]] </a>
+		<br/><br/>
+		
+		<div th:if="${doctors != null and !doctors.empty}">
+			<table border="1">
+				<tr>
+					<th> [[#{entity.name}]] </th>
+					<th> [[#{department}]] </th>
+				</tr>
+				<tr th:each="doctor : ${doctors}">
+					<td th:text="${doctor.surname} + ', ' + ${doctor.name}" />
+					<td th:text="${doctor.department.specialization.name} + ', office ' + ${doctor.department.officeNo}" />
+					<td><a th:href="@{/editDoctor/} + ${doctor.doctorId}"> [[#{actions.edit}]] </a></td>
+					<td><a th:href="@{/deleteDoctor(doctorId=${doctor.doctorId})}"> [[#{actions.delete}]] </a></td>
+				</tr>
+			</table>
+		</div>
+		<div th:if="${doctors == null or doctors.empty}">
+			[[#{actions.emptyList}]]
+		</div>
+		
+		<br/>
+		<footer th:replace="~{layout/layout :: footer}"></footer>
+	</body>
+</html>

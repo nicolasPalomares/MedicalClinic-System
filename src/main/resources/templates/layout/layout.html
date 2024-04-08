@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+	
+		<header th:fragment="header">
+			<h1> [[#{layout.header}]] </h1>
+			<a th:href="@{/}"> [[#{actions.homepage}]] </a>
+		</header>
+		
+		<footer th:fragment="footer">
+			<div>
+				<a th:href="@{/(lang=en)}">EN</a> |
+				<a th:href="@{/(lang=es)}">ES</a> |
+			</div>
+			<br/>
+			<span> [[#{layout.footer}]] </span>
+			<br/><br/>
+			<form method="POST" th:action="@{/logout}">
+				<b>User: </b> <span sec:authentication="name">Logged in User</span>
+				<br/>
+				<b>Roles: </b> <span sec:authentication="principal.authorities">User roles</span>
+				<br/>
+				<a href="#" onclick="this.parentNode.submit();">Logout</a>
+			</form>
+		</footer>
+	
+	</body>
+</html>

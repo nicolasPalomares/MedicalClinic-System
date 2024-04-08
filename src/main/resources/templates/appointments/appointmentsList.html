@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      
+	<head>
+		<meta charset="UTF-8">
+		<title> [[#{index.title}]] </title>
+	</head>
+	<body>
+		<header th:replace="~{layout/layout :: header}"></header>
+		<br/>
+		<a th:href="@{/insertAppointment}"> [[#{actions.appointment.insert}]] </a>
+		<br/><br/>
+		
+		<div th:if="${appointments != null and !appointments.empty}">
+			<table border="1">
+				<tr>
+					<th> [[#{appointment.client}]] </th>
+					<th> [[#{appointment.doctor}]] </th>
+					<th> [[#{appointment.date}]] </th>
+					<th> [[#{appointment.time}]] </th>
+				</tr>
+				<tr th:each="appointment : ${appointments}">
+					<td th:text="${appointment.client.surname} + ', ' + ${appointment.client.name}" />
+					<td th:text="${appointment.doctor.surname} + ', ' + ${appointment.doctor.name} + ' (' + ${appointment.doctor.department.specialization.name} + ')'" />
+					<td th:text="${appointment.date}" />
+					<td th:text="${appointment.time}" />
+					<td><a th:href="@{/editAppointment/} + ${appointment.appointmentId}"> [[#{actions.edit}]] </a></td>
+					<td><a th:href="@{/deleteAppointment(appointmentId=${appointment.appointmentId})}"> [[#{actions.delete}]] </a></td>
+				</tr>
+			</table>
+		</div>
+		<div th:if="${appointments == null or appointments.empty}">
+			[[#{actions.emptyList}]]
+		</div>
+		
+		<br/>
+		<footer th:replace="~{layout/layout :: footer}"></footer>
+	</body>
+</html>
