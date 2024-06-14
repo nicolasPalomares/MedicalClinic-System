@@ -28,3 +28,8 @@ IMPORTANT: Right now, there is a problem in which the Bootstrap styles (sometime
 the application: the first time the server is up, and after a session timeout. Still working on a solution.
 
 ![msedge_NsuoR1UETk](https://github.com/nicolasPalomares/MedicalClinic-System/assets/106792719/8fd0a9fe-3164-406b-afa3-b96189fcba06)
+![msedge_2LJ3uPpe8Y](https://github.com/nicolasPalomares/MedicalClinic-System/assets/106792719/0e36bee1-2846-4814-a489-ac4a9daf3b1e)
+![msedge_wdDNeNLmOE](https://github.com/nicolasPalomares/MedicalClinic-System/assets/106792719/5b8506dc-7945-45f8-8404-26eb008b009d)
+![msedge_JMNi5Yy7zM](https://github.com/nicolasPalomares/MedicalClinic-System/assets/106792719/74b346e0-7105-40d3-b617-5162f4fd81e7)
+![msedge_16yKpGosHl](https://github.com/nicolasPalomares/MedicalClinic-System/assets/106792719/48a48a73-dc55-4fbf-8fe4-00fa5ad29d2b)
+
