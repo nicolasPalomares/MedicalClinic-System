@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	
+	<body>
+	
+		<section th:fragment="addClient" class="py-4 mb-4 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{/insertClient}" class="btn btn-primary w-100">
+							<i class="fas fa-plus"></i> [[#{actions.add}]]
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section th:fragment="addDoctor" class="py-4 mb-4 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{/insertDoctor}" class="btn btn-primary w-100">
+							<i class="fas fa-plus"></i> [[#{actions.add}]]
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section th:fragment="departmentButtons" class="py-4 mb-4 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{/insertDepartment}" class="btn btn-primary w-100">
+							<i class="fas fa-plus"></i> [[#{actions.add}]]
+						</a>
+					</div>
+					<div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{/specializationsListRedirect}" class="btn btn-primary w-100">
+							[[#{specializations}]]
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section th:fragment="addSpecialization" class="py-4 mb-4 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{/insertSpecialization}" class="btn btn-primary w-100">
+							<i class="fas fa-plus"></i> [[#{actions.add}]]
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section th:fragment="addAppointment" class="py-4 mb-4 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{/insertAppointment}" class="btn btn-primary w-100">
+							<i class="fas fa-plus"></i> [[#{actions.add}]]
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+	</body>
+	
+</html>

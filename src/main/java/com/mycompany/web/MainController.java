@@ -52,6 +52,8 @@ public class MainController {
 	 * @param user The currently logged-in user.
 	 * @return The index page. 
 	 */
+	
+	/*
 	@GetMapping("/")
 	public String index(Model model, @AuthenticationPrincipal User user) {
 		
@@ -59,6 +61,15 @@ public class MainController {
 		return "index";
 		
 	}
+	*/
+	
+	@GetMapping("/index")
+    public String indexRedirect(Model model, @AuthenticationPrincipal User user) {
+		
+        log.info("login: " + user);
+        return "index";
+        
+    }
 	
 	/** 
 	 * The following methods redirects the user from index page to the main page of the selected entity,
@@ -71,6 +82,7 @@ public class MainController {
 		
 		var clients = clientService.listEntity();
 		model.addAttribute("clients", clients);
+		model.addAttribute("totalClients", clients.size());
 		
 		return "clients/clientsList";
 		
@@ -81,6 +93,7 @@ public class MainController {
 		
 		var departments = departmentService.listEntity();
 		model.addAttribute("departments", departments);
+		model.addAttribute("totalDepartments", departments.size());
 		
 		return "departments/departmentsList";
 		
@@ -91,6 +104,7 @@ public class MainController {
 		
 		var specializations = specializationService.listEntity();
 		model.addAttribute("specializations", specializations);
+		model.addAttribute("totalSpecializations", specializations.size());
 		
 		return "departments/specializations/specializationsList";
 		
@@ -101,6 +115,7 @@ public class MainController {
 		
 		var doctors = doctorService.listEntity();
 		model.addAttribute("doctors", doctors);
+		model.addAttribute("totalDoctors", doctors.size());
 		
 		return "doctors/doctorsList";
 		
@@ -111,6 +126,7 @@ public class MainController {
 		
 		var appointments = appointmentService.listEntity();
 		model.addAttribute("appointments", appointments);
+		model.addAttribute("totalAppointments", appointments.size());
 		
 		return "appointments/appointmentsList";
 		

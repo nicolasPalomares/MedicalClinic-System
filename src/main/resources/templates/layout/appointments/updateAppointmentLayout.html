@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	
+	<body>
+	
+		<section th:fragment="updateAppointmentLayout">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<form th:action="@{/saveAppointment}" method="post" th:object="${appointment}" class="was-validated p-4">
+							<!-- if appointmentId == null then insert appointment, else update appointment -->
+							<input type="hidden" name="appointmentId" th:field="*{appointmentId}" />
+							<div class="form-group p-2">
+								<label for="client" class="lead mb-2"> [[#{appointment.client}]] </label>
+								<select th:field="*{client}" class="form-control p-3" required>
+									<option value=""> [[#{updateAppointment.client.dropdownIndex}]] </option>
+									<option th:each="client : ${clients}" th:value="${client.clientId}" th:text="${client.surname} + ', ' + ${client.name}"></option>
+								</select>
+							</div>
+							<div class="form-group p-2">							
+								<label for="doctor" class="lead mb-2"> [[#{appointment.doctor}]] </label>
+								<select th:field="*{doctor}" class="form-control p-3" required>
+									<option value=""> [[#{updateAppointment.doctor.dropdownIndex}]] </option>
+									<option th:each="doctor : ${doctors}" th:value="${doctor.doctorId}" th:text="${doctor.surname} + ', ' + ${doctor.name} + ' (' + ${doctor.department.specialization.name} + ')'"></option>
+								</select>
+							</div>
+							<div class="form-group p-2">
+								<label for="date" class="lead mb-2"> [[#{appointment.date}]] </label>
+								<input type="date" name="date" th:field="*{date}" th:value="${date}" class="form-control p-3" required />
+							</div>
+							<div class="form-group p-2">
+								<label for="time" class="lead mb-2"> [[#{appointment.time}]] </label>
+								<input type="time" name="time" th:field="*{time}" th:value="${time}" class="form-control p-3" required />
+							</div>
+							<div class="form-group p-2">							
+								<input type="submit" name="save" th:value="#{actions.save}" class="btn btn-primary w-50 mt-4 p-3" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+	</body>
+	
+</html>

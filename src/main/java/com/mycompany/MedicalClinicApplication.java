@@ -12,8 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * specializations and appointments, and visualize it through HTML pages. Appointments need a client, a doctor, a date and a time in order to be created and saved.
  * By default, I also created two users for Spring Security: a standard user with USER role, and an admin with both USER and ADMIN roles. Creation of new users is not
  * available inside the program at the moment.
- * Users have the freedom to create instances of Client, Doctor and Appointment, save them to the database and visualize the respective tables. Meanwhile, the administrators
- * have the addition of managing the departments and specializations in the clinic (this means that common users have no access to this information).
+ * Users have the freedom to visualize the respective tables of clients, doctors and appointments. Meanwhile, the admin can manage the departments and specializations in the clinic
+ * (this means that common users have no access to this information), and can edit and delete registers of every entity.
  * Since this application shares funcionalities from previous projects of mine, a lot of the code of this project was reused from my other program, the "Student Management System".
  * The program includes i18n with two languages, english (default) and spanish.
  * 
@@ -44,6 +44,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * - Spring Boot Starter Validation for validating data in the application.
  * 
  * (For detailed documentation of each class, method and component, please refer to the generated Javadoc)
+ * 
+ * 
+ * UPDATE 2.0 (June 13, 2024)
+ * The application has been updated to include Bootstrap 5.3.3
+ * Key features include:
+ * - Enhanced UI components.
+ * - Predefined styling classes for forms, buttons, and other UI components.
+ * - Responsive design.
+ * - Pages have been separated in sections through layout pages ('src/main/java/resources/templates/layout'), and then loaded with Thymeleaf fragments.
+ * 
+ * IMPORTANT: Right now, there is a problem in which the Bootstrap styles (sometimes) don't load in the login page. This happens in two parts of
+ * the application: the first time the server is up, and after a session timeout. Still working on a solution.
  */
 
 @SpringBootApplication

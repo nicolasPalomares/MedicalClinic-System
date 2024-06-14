@@ -2,39 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
       
-	<head>
-		<meta charset="UTF-8">
+	<head th:replace="~{layout/layout :: head}">
 		<title> [[#{index.title}]] </title>
 	</head>
+	
 	<body>
+	
 		<header th:replace="~{layout/layout :: header}"></header>
-		<br/>
-		<a th:href="@{/insertSpecialization}"> [[#{actions.specialization.insert}]] </a>
-		<br/><br/>
-		
-		<div th:if="${specializations != null and !specializations.empty}">
-			<table border="1">
-				<tr>
-					<th> [[#{specialization.name}]] </th>
-					<th> [[#{specialization.services}]] </th>
-				</tr>
-				<tr th:each="specialization : ${specializations}">
-					<td th:text="${specialization.name}" />
-					<td>
-						<ul>
-							<li th:each="service : ${specialization.services}" th:text="${service}" />
-						</ul>
-					</td>
-					<td><a th:href="@{/editSpecialization/} + ${specialization.specializationId}"> [[#{actions.edit}]] </a></td>
-					<td><a th:href="@{/deleteSpecialization(specializationId=${specialization.specializationId})}"> [[#{actions.delete}]] </a></td>
-				</tr>
-			</table>
-		</div>
-		<div th:if="${specializations == null or specializations.empty}">
-			[[#{actions.emptyList}]]
-		</div>
-		
-		<br/>
+		<section th:replace="~{layout/buttonsLayout :: addSpecialization}"></section>
+		<section th:replace="~{layout/departments/specializations/specializationsListLayout :: specializationsList}"></section>
 		<footer th:replace="~{layout/layout :: footer}"></footer>
+		
 	</body>
 </html>

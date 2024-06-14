@@ -2,36 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
       
-	<head>
-		<meta charset="UTF-8">
+	<head th:replace="~{layout/layout :: head}">
 		<title> [[#{index.title}]] </title>
 	</head>
+	
 	<body>
 		<header th:replace="~{layout/layout :: header}"></header>
-		<br/>
-		<a th:href="@{/insertDepartment}"> [[#{actions.department.insert}]] </a> |
-		<a th:href="@{/specializationsListRedirect}"> [[#{actions.department.list-specializations}]] </a>
-		<br/><br/>
-		
-		<div th:if="${departments != null and !departments.empty}">
-			<table border="1">
-				<tr>
-					<th> [[#{department.specialization}]] </th>
-					<th> [[#{department.office}]] </th>
-				</tr>
-				<tr th:each="department : ${departments}">
-					<td th:text="${department.specialization.name} + ' ' + ${department.specialization.services}" />
-					<td th:text="${department.officeNo}" />
-					<td><a th:href="@{/editDepartment/} + ${department.departmentId}"> [[#{actions.edit}]] </a></td>
-					<td><a th:href="@{/deleteDepartment(departmentId=${department.departmentId})}"> [[#{actions.delete}]] </a></td>
-				</tr>
-			</table>
-		</div>
-		<div th:if="${departments == null or departments.empty}">
-			[[#{actions.emptyList}]]
-		</div>
-		
-		<br/>
+		<section th:replace="~{layout/buttonsLayout :: departmentButtons}"></section>
+		<section th:replace="~{layout/departments/departmentsListLayout :: departmentsList}"></section>
 		<footer th:replace="~{layout/layout :: footer}"></footer>
 	</body>
+	
 </html>

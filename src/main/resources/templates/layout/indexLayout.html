@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      
+	<head th:replace="~{layout/layout :: head}">
+		<title>Insert title here</title>
+	</head>
+	
+	<body>
+		<section th:fragment="indexLayout">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="list-group list-group-flush p-4 mt-5">
+							<a th:href="@{/clientsListRedirect}" class="list-group-item list-group-item-action lead text-center">
+								<i class="fas fa-users"></i> <br/> [[#{index.clients-list}]]
+							</a>
+							<a th:href="@{/doctorsListRedirect}" class="list-group-item list-group-item-action lead text-center">
+								<i class="fas fa-user-doctor"></i> <br/> [[#{index.doctors-list}]] 
+							</a>
+							<a th:href="@{/appointmentsListRedirect}" class="list-group-item list-group-item-action lead text-center">
+								<i class="fas fa-calendar-check"></i> <br/> [[#{index.appointments-list}]] 
+							</a>
+							<a th:href="@{/departmentsListRedirect}" class="list-group-item list-group-item-action lead text-center" sec:authorize="hasRole('ROLE_ADMIN')">
+								<i class="fas fa-building-user"></i> <br/> [[#{index.departments-list}]] 
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+	
+		<section th:fragment="clientsList" id="clients">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<div class="card">
+							<div class="card-header">
+								<h4> [[#{client.list-title}]] </h4>
+							</div>
+							<div th:if="${clients != null and !clients.empty}">
+								<table class="table table-bordered table-hover">
+									<thead class="table-dark">
+										<tr>
+											<th> # </th>
+											<th> [[#{entity.name}]] </th>
+											<th> [[#{client.lifeInsuranceType}]] </th>
+											<th> [[#{client.address}]] </th>
+											<th> [[#{client.contact.phoneNumber}]] </th>
+											<th> [[#{client.contact.email}]] </th>
+											<th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+											<th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="client, counter : ${clients}">
+											<td> [[${counter.count}]] </td>
+											<td> [[${client.surname} + ', ' + ${client.name}]] </td>
+											<td> [[${client.lifeInsuranceType}]] </td>
+											<td> [[${client.address.street} + ' ' + ${client.address.streetNo}]] </td>
+											<td> [[${client.contact.phoneNumber}]] </td>
+											<td> [[${client.contact.email}]] </td>
+											<td sec:authorize="hasRole('ROLE_ADMIN')">
+												<a th:href="@{/editClient/} + ${client.clientId}" 
+													class="btn btn-outline-secondary"> <i class="fas fa-angle-double-right"></i> [[#{actions.edit}]] </a>
+											</td>
+											<td sec:authorize="hasRole('ROLE_ADMIN')">
+												<a th:href="@{/deleteClient(clientId=${client.clientId})}" 
+													class="btn btn-outline-danger"> <i class="fas fa-angle-double-right"></i> [[#{actions.delete}]] </a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div th:if="${clients == null or clients.empty}">
+								[[#{actions.emptyList}]]
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-3">
+						<div class="card text-center bg-primary text-white mb-3">
+							<div class="card-body">
+								<h3> [[#{actions.total}]] </h3>
+								<h4 class="display-4">
+									<i class="fas fa-users"></i> [[${totalClients}]]
+								</h4>
+							</div>
+						</div>
+					</div>					
+				</div>
+			</div>
+		</section>
+		
+	</body>
+</html>

@@ -1,72 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-	<head>
-		<meta charset="UTF-8">
+      
+	<head th:replace="~{layout/layout :: head}">
 		<title> [[#{updateClient.title}]] </title>
 	</head>
 	<body>
+	
 		<header th:replace="~{layout/layout :: header}"></header>
-		<br/>
-		
-		
-		<form th:action="@{/saveClient}" method="post" th:object="${client}">
-			<!-- if clientId == null then insert client, else update client -->
-			<input type="hidden" name="clientId" th:field="*{clientId}" />
-			
-			<label for="name"> [[#{entity.name}]] </label>
-			<input type="text" name="name" th:field="*{name}" />
-			<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-			<br/><br/>
-			
-			<label for="surname"> [[#{entity.surname}]] </label>
-			<input type="text" name="surname" th:field="*{surname}" />
-			<span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></span>
-			<br/><br/>
-			
-			<label for="lifeInsuranceType"> [[#{client.lifeInsuranceType}]] </label>
-			<select th:field="*{lifeInsuranceType}">
-				<option value=""> [[#{updateClient.dropdownIndex}]] </option>
-				<option th:each="insurance : ${insurances}" th:value="${insurance}" th:text="${insurance}"></option>
-			</select>
-			<span th:if="${#fields.hasErrors('lifeInsuranceType')}" th:errors="*{lifeInsuranceType}"></span>
-			<br/><br/><br/>
-			
-			<!-- Address Form: -->
-			[[#{client.address}]]:
-			<input type="hidden" name="address.addressId" th:field="*{address.addressId}" />
-			<br/><br/>
-			
-			<label for="street"> [[#{client.address.street}]] </label>
-			<input type="text" name="address.street" th:field="*{address.street}" />
-			<span th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}"></span>
-			<br/><br/>
-			
-			<label for="streetNo"> [[#{client.address.streetNo}]] </label>
-			<input type="text" name="address.streetNo" th:field="*{address.streetNo}" />
-			<span th:if="${#fields.hasErrors('address.streetNo')}" th:errors="*{address.streetNo}"></span>
-			<br/><br/><br/>
-			
-			<!-- Contact Form: -->
-			[[#{client.contact}]]:
-			<input type="hidden" name="contact.contactId" th:field="*{contact.contactId}" />
-			<br/><br/>
-			
-			<label for="phoneNumber"> [[#{client.contact.phoneNumber}]] </label>
-			<input type="tel" name="contact.phoneNumber" th:field="*{contact.phoneNumber}" />
-			<span th:if="${#fields.hasErrors('contact.phoneNumber')}" th:errors="*{contact.phoneNumber}"></span>
-			<br/><br/>
-			
-			<label for="email"> [[#{client.contact.email}]] </label>
-			<input type="text" name="contact.email" th:field="*{contact.email}" />
-			<span th:if="${#fields.hasErrors('contact.email')}" th:errors="*{contact.email}"></span>
-			<br/><br/>
-			
-			<input type="submit" name="save" th:value="#{actions.save}" />
-		</form>
-		<br/>
-		
-		
+		<section th:replace="~{layout/clients/updateClientLayout :: updateClientLayout}"></section>
 		<footer th:replace="~{layout/layout :: footer}"></footer>
+		
 	</body>
 </html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	
+	<body>
+	
+		<section th:fragment="specializationsList" id="specializations">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<div class="card">
+							<div class="card-header">
+								<h4> [[#{specialization.list-title}]] </h4>
+							</div>
+							<div th:if="${specializations != null and !specializations.empty}">
+								<table class="table table-bordered table-hover">
+									<thead class="table-dark">
+										<tr>
+											<th> # </th>
+											<th> [[#{specialization.name}]] </th>
+											<th> [[#{specialization.services}]] </th>
+											<th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+											<th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="specialization, counter : ${specializations}">
+											<td> [[${counter.count}]] </td>
+											<td th:text="${specialization.name}" />
+											<td>
+												<ul class="list-group list-group-flush">
+													<li th:each="service : ${specialization.services}" th:text="${service}" class="list-group-item flex-column align-items-start" />
+												</ul>
+											</td>
+											<td sec:authorize="hasRole('ROLE_ADMIN')">
+												<a th:href="@{/editSpecialization/} + ${specialization.specializationId}" 
+													class="btn btn-outline-secondary"> <i class="fas fa-angle-double-right"></i> [[#{actions.edit}]] </a>
+											</td>
+											<td sec:authorize="hasRole('ROLE_ADMIN')">
+												<a th:href="@{/deleteSpecialization(specializationId=${specialization.specializationId})}" 
+													class="btn btn-outline-danger"> <i class="fas fa-angle-double-right"></i> [[#{actions.delete}]] </a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div th:if="${specializations == null or specializations.empty}">
+								[[#{actions.emptyList}]]
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-3">
+						<div class="card text-center bg-primary text-white mb-3">
+							<div class="card-body">
+								<h3> [[#{actions.total}]] </h3>
+								<h4 class="display-4">
+									<i class="fas fa-users"></i> [[${totalSpecializations}]]
+								</h4>
+							</div>
+						</div>
+					</div>					
+				</div>
+			</div>
+		</section>
+	
+	</body>
+	
+</html>

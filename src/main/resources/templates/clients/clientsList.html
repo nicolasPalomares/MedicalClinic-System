@@ -2,41 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
       
-	<head>
-		<meta charset="UTF-8">
+	<head th:replace="~{layout/layout :: head}">
 		<title> [[#{index.title}]] </title>
 	</head>
 	<body>
+	
 		<header th:replace="~{layout/layout :: header}"></header>
-		<br/>
-		<a th:href="@{/insertClient}"> [[#{actions.client.insert}]] </a>
-		<br/><br/>
-		
-		<div th:if="${clients != null and !clients.empty}">
-			<table border="1">
-				<tr>
-					<th> [[#{entity.name}]] </th>
-					<th> [[#{client.lifeInsuranceType}]] </th>
-					<th> [[#{client.address}]] </th>
-					<th> [[#{client.contact.phoneNumber}]] </th>
-					<th> [[#{client.contact.email}]] </th>
-				</tr>
-				<tr th:each="client : ${clients}">
-					<td th:text="${client.surname} + ', ' + ${client.name}" />
-					<td th:text="${client.lifeInsuranceType}" />
-					<td th:text="${client.address.street} + ' ' + ${client.address.streetNo}" />
-					<td th:text="${client.contact.phoneNumber}" />
-					<td th:text="${client.contact.email}" />
-					<td><a th:href="@{/editClient/} + ${client.clientId}"> [[#{actions.edit}]] </a></td>
-					<td><a th:href="@{/deleteClient(clientId=${client.clientId})}"> [[#{actions.delete}]] </a></td>
-				</tr>
-			</table>
-		</div>
-		<div th:if="${clients == null or clients.empty}">
-			[[#{actions.emptyList}]]
-		</div>
-		
-		<br/>
+		<section th:replace="~{layout/buttonsLayout :: addClient}"></section>
+		<section th:replace="~{layout/clients/clientsListLayout :: clientsList}"></section>
 		<footer th:replace="~{layout/layout :: footer}"></footer>
+		
 	</body>
 </html>

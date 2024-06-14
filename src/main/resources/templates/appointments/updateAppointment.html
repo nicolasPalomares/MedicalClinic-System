@@ -1,50 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-	<head>
-		<meta charset="UTF-8">
+      
+	<head th:replace="~{layout/layout :: head}">
 		<title> [[#{updateAppointment.title}]] </title>
 	</head>
+	
 	<body>
 		<header th:replace="~{layout/layout :: header}"></header>
-		<br/>
-		
-		
-		<form th:action="@{/saveAppointment}" method="post" th:object="${appointment}">
-			<!-- if appointmentId == null then insert appointment, else update appointment -->
-			<input type="hidden" name="appointmentId" th:field="*{appointmentId}" />
-			
-			<label for="name"> [[#{appointment.client}]] </label>
-			<select th:field="*{client}">
-				<option value=""> [[#{updateAppointment.client.dropdownIndex}]] </option>
-				<option th:each="client : ${clients}" th:value="${client.clientId}" th:text="${client.surname} + ', ' + ${client.name}"></option>
-			</select>
-			<span th:if="${#fields.hasErrors('client')}" th:errors="*{client}"></span>
-			<br/><br/>
-			
-			<label for="doctor"> [[#{appointment.doctor}]] </label>
-			<select th:field="*{doctor}">
-				<option value=""> [[#{updateAppointment.doctor.dropdownIndex}]] </option>
-				<option th:each="doctor : ${doctors}" th:value="${doctor.doctorId}" th:text="${doctor.surname} + ', ' + ${doctor.name} + ' (' + ${doctor.department.specialization.name} + ')'"></option>
-			</select>
-			<span th:if="${#fields.hasErrors('doctor')}" th:errors="*{doctor}"></span>
-			<br/><br/>
-			
-			<label for="date"> [[#{appointment.date}]] </label>
-			<input type="date" name="date" th:field="*{date}" th:value="${date}" />
-			<span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
-			<br/><br/>
-			
-			<label for="time"> [[#{appointment.time}]] </label>
-			<input type="time" name="time" th:field="*{time}" th:value="${time}" />
-			<span th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></span>
-			<br/><br/>
-			
-			<input type="submit" name="save" th:value="#{actions.save}" />
-		</form>
-		<br/>
-		
-		
+		<section th:replace="~{layout/appointments/updateAppointmentLayout :: updateAppointmentLayout}"></section>
 		<footer th:replace="~{layout/layout :: footer}"></footer>
 	</body>
+	
 </html>

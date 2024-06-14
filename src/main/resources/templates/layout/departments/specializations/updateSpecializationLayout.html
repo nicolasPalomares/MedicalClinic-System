@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" th:href="@{/css/styles.css}" />
+	</head>
+	
+	<body>
+	
+		<section th:fragment="updateSpecializationLayout">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+					
+						<form th:action="@{/saveSpecialization}" method="post" th:object="${specialization}" class="was-validated p-4">
+							<!-- if departmentId == null then insert department, else update department -->
+							<input type="hidden" name="specializationId" th:field="*{specializationId}" />
+							<div class="form-group p-2">
+								<label for="name" class="lead mb-2"> [[#{specialization.name}]] </label>
+								<input type="text" name="name" th:field="*{name}" class="form-control p-3" required />
+							</div>
+							<div class="form-group p-2">
+								<label for="services" class="lead mb-2"> [[#{updateSpecialization.checkbox}]] </label> <br/>
+								<div class="form-check form-check-inline">
+									<input type="checkbox" name="services" th:field="*{services}" value="Clinic" id="clinicCheck" class="form-check-input">
+									<label for="clinicCheck" class="form-check-label text-dark"> [[#{updateSpecialization.clinic}]] </label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input type="checkbox" name="services" th:field="*{services}" value="Surgery" id="surgeryCheck" class="form-check-input">
+									<label for="surgeryCheck" class="form-check-label text-dark"> [[#{updateSpecialization.surgery}]] </label>
+								</div>
+							</div>
+							<div class="form-group p-2">							
+								<input type="submit" name="save" th:value="#{actions.save}" class="btn btn-primary w-50 mt-4 p-3" />
+							</div>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+	
+	</body>
+	
+</html>

@@ -1,32 +1,91 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-	<head>
+      
+	<head th:fragment="head">
 		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+		<link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		
+		<style>
+			html {
+			    position: relative;
+			    min-height: 100%;
+			}
+			body {
+			    margin: 0 0 150px;
+			}
+			footer {
+			    position: absolute;
+			    left: 0;
+			    bottom: 0;
+			    width: 100%;
+			    height: 100px;
+			}
+		</style>
+		
 	</head>
+	
 	<body>
 	
 		<header th:fragment="header">
-			<h1> [[#{layout.header}]] </h1>
-			<a th:href="@{/}"> [[#{actions.homepage}]] </a>
+			<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+				<div class="container">
+					<div sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
+						<div class="nav-item mr-3">
+							<div class="navbar-brand">
+								<i class="nav-item fas fa-user"></i>
+								<span> [[#{navbar.welcome}]] </span>
+								<span sec:authentication="name"></span>
+							</div>
+						</div>
+					</div>
+					<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarCollapse">
+						<ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
+							<li class="nav-item mr-3">
+								<a th:href="@{/}" class="nav-link"> [[#{actions.homepage}]] </a>
+							</li>
+							<li class="nav-item">
+								<form method="POST" th:action="@{/logout}">
+									<a href="#" onclick="this.parentNode.submit();" class="nav-link">
+										<i class="fas fa-user-times"></i> [[#{navbar.logout}]]
+									</a>
+								</form>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<section id="main-header" class="py-2 bg-primary text-white">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<h1>
+								<i class="fas fa-cog"></i> [[#{index.title}]]
+							</h1>
+						</div>
+					</div>
+				</div>
+			</section>
 		</header>
-		
-		<footer th:fragment="footer">
-			<div>
-				<a th:href="@{/(lang=en)}">EN</a> |
-				<a th:href="@{/(lang=es)}">ES</a> |
+
+		<footer th:fragment="footer" class="bg-secondary text-black p-5">
+			<div class="container">
+				<div class="col">
+					<p class="lead text-center">
+						<a th:href="@{/(lang=en)}" class="btn btn-primary">EN</a> |
+						<a th:href="@{/(lang=es)}" class="btn btn-primary">ES</a> |
+						<span> [[#{layout.footer}]] &copy; </span>
+					</p>
+				</div>
 			</div>
-			<br/>
-			<span> [[#{layout.footer}]] </span>
-			<br/><br/>
-			<form method="POST" th:action="@{/logout}">
-				<b>User: </b> <span sec:authentication="name">Logged in User</span>
-				<br/>
-				<b>Roles: </b> <span sec:authentication="principal.authorities">User roles</span>
-				<br/>
-				<a href="#" onclick="this.parentNode.submit();">Logout</a>
-			</form>
 		</footer>
-	
+		
 	</body>
 </html>

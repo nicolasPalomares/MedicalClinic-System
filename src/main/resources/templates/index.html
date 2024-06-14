@@ -2,31 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
       
-	<head>
-		<meta charset="UTF-8">
+	<head th:replace="~{layout/layout :: head}">
 		<title> [[#{index.title}]] </title>
 	</head>
+	
 	<body>
 		<header th:replace="~{layout/layout :: header}"></header>
-		<br/>
-		<ul>
-			<li>
-				<a th:href="@{/clientsListRedirect}"> [[#{index.clients-list}]] </a>
-			</li>
-			
-			<li>
-				<a th:href="@{/doctorsListRedirect}"> [[#{index.doctors-list}]] </a>
-			</li>
-	
-			<li>
-				<a th:href="@{/appointmentsListRedirect}"> [[#{index.appointments-list}]] </a>
-			</li>
-			
-			<li sec:authorize="hasRole('ROLE_ADMIN')">
-				<a th:href="@{/departmentsListRedirect}"> [[#{index.departments-list}]] </a>
-			</li>
-		</ul>
-		<br/><br/>
+		<section th:replace="~{layout/indexLayout :: indexLayout}"></section>
 		<footer th:replace="~{layout/layout :: footer}"></footer>
 	</body>
 	

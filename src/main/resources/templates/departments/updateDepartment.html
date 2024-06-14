@@ -1,37 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-	<head>
-		<meta charset="UTF-8">
+      
+	<head th:replace="~{layout/layout :: head}">
 		<title> [[#{updateDepartment.title}]] </title>
 	</head>
+	
 	<body>
+	
 		<header th:replace="~{layout/layout :: header}"></header>
-		<br/>
-		
-		
-		<form th:action="@{/saveDepartment}" method="post" th:object="${department}">
-			<!-- if departmentId == null then insert department, else update department -->
-			<input type="hidden" name="departmentId" th:field="*{departmentId}" />
-			
-			<label for="specialization"> [[#{department.specialization}]] </label>
-			<select th:field="*{specialization}" name="specializationDropdown" id="specializationDropdown">
-			<option value=""> [[#{actions.specializationDropdown}]] </option>
-				<option th:each="specialization : ${specializations}" th:value="${specialization.specializationId}" th:text="${specialization.name}"></option>
-			</select>
-			<span th:if="${#fields.hasErrors('specialization')}" th:errors="*{specialization}"></span>
-			<br/><br/>
-			
-			<label for="officeNo"> [[#{department.office}]] </label>
-			<input type="number" name="officeNo" th:field="*{officeNo}" />
-			<span th:if="${#fields.hasErrors('officeNo')}" th:errors="*{officeNo}"></span>
-			<br/><br/>
-			
-			<input type="submit" name="save" th:value="#{actions.save}" />
-		</form>
-		<br/>
-		
-		
+		<section th:replace="~{layout/departments/updateDepartmentLayout :: updateDepartmentLayout}"></section>
 		<footer th:replace="~{layout/layout :: footer}"></footer>
+		
 	</body>
 </html>

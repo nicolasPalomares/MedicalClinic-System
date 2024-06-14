@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	
+	<body>
+	
+		<section th:fragment="updateDoctorLayout">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+					
+						<form th:action="@{/saveDoctor}" method="post" th:object="${doctor}" class="was-validated p-4">
+							<!-- if doctorId == null then insert doctor, else update doctor -->
+							<input type="hidden" name="doctorId" th:field="*{doctorId}" />
+							<div class="form-group p-2">
+								<label for="name" class="lead mb-2"> [[#{entity.name}]] </label>
+								<input type="text" name="name" th:field="*{name}" class="form-control p-3" required />
+							</div>
+							<div class="form-group p-2">							
+								<label for="surname" class="lead mb-2"> [[#{entity.surname}]] </label>
+								<input type="text" name="surname" th:field="*{surname}" class="form-control p-3" required />
+							</div>
+							<div class="form-group p-2">
+								<label for="department" class="lead mb-2"> [[#{department}]] </label>
+								<select th:field="*{department}" class="form-control p-3" required>
+									<option value=""> [[#{updateDoctor.dropdownIndex}]] </option>
+									<option th:each="department : ${departments}" th:value="${department.departmentId}" th:text="${department.specialization.name} + ', office ' + ${department.officeNo}"></option>
+								</select>
+							</div>
+							<div class="form-group p-2">							
+								<input type="submit" name="save" th:value="#{actions.save}" class="btn btn-primary w-50 mt-4 p-3" />
+							</div>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+	
+	</body>
+</html>
