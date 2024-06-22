@@ -17,6 +17,7 @@ The program includes i18n with two languages, english (default) and spanish.
 - Spring Framework version: 3.2.4
 
 June 13, 2024:
+
 The application has been updated to include Bootstrap 5.3.3
 Key features include:
 - Enhanced UI components.
