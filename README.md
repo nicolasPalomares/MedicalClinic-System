@@ -16,7 +16,8 @@ The program includes i18n with two languages, english (default) and spanish.
 - JDK version: 21
 - Spring Framework version: 3.2.4
 
-UPDATE 2.0 (June 13, 2024)
+June 13, 2024:
+
 The application has been updated to include Bootstrap 5.3.3
 Key features include:
 - Enhanced UI components.
@@ -26,6 +27,8 @@ Key features include:
 
 IMPORTANT: Right now, there is a problem in which the Bootstrap styles (sometimes) don't load in the login page. This happens in two parts of
 the application: the first time the server is up, and after a session timeout. Still working on a solution.
+
+Screenshots:
 
 ![msedge_NsuoR1UETk](https://github.com/nicolasPalomares/MedicalClinic-System/assets/106792719/8fd0a9fe-3164-406b-afa3-b96189fcba06)
 ![msedge_2LJ3uPpe8Y](https://github.com/nicolasPalomares/MedicalClinic-System/assets/106792719/0e36bee1-2846-4814-a489-ac4a9daf3b1e)
