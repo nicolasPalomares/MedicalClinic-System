@@ -35,6 +35,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * - Services and DAO classes encapsulate business logic and interact with repositories for database operations.
  * - Entities represent database elements and are mapped to Java objects.
  * - HTML pages represent the View layer for every logic operation.
+ * - Pages have been separated in sections through layout pages ('src/main/java/resources/templates/layout'), and then loaded with Thymeleaf fragments.
  * 
  * External Dependencies:
  * - PostgreSQL database for persistence storage of student (including address and contact), course, assignment, user and role (USER, ADMIN) data.
@@ -42,17 +43,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * - Spring Data JPA for simplifying database access.
  * - Spring Security for implementing authentication and authorization.
  * - Spring Boot Starter Validation for validating data in the application.
- * 
- * (For detailed documentation of each class, method and component, please refer to the generated Javadoc)
- * 
- * 
- * UPDATE 2.0 (June 13, 2024)
- * The application has been updated to include Bootstrap 5.3.3
- * Key features include:
- * - Enhanced UI components.
+ * - Enhanced UI components with Bootstrap.
  * - Predefined styling classes for forms, buttons, and other UI components.
  * - Responsive design.
- * - Pages have been separated in sections through layout pages ('src/main/java/resources/templates/layout'), and then loaded with Thymeleaf fragments.
+ * 
+ * (For detailed documentation of each class, method and component, please refer to the generated Javadoc)
  * 
  * IMPORTANT: Right now, there is a problem in which the Bootstrap styles (sometimes) don't load in the login page. This happens in two parts of
  * the application: the first time the server is up, and after a session timeout. Still working on a solution.
