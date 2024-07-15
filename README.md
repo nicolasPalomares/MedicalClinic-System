@@ -13,9 +13,6 @@ have the addition of managing the departments and specializations in the clinic 
 Since this application shares funcionalities from previous projects of mine, a lot of the code of this project was reused from my other program, the "Student Management System".
 The program includes i18n with two languages, english (default) and spanish.
 
-- JDK version: 21
-- Spring Framework version: 3.2.4
-
 June 13, 2024:
 
 The application has been updated to include Bootstrap 5.3.3
@@ -36,3 +33,4 @@ Screenshots:
 ![msedge_JMNi5Yy7zM](https://github.com/nicolasPalomares/MedicalClinic-System/assets/106792719/74b346e0-7105-40d3-b617-5162f4fd81e7)
 ![msedge_16yKpGosHl](https://github.com/nicolasPalomares/MedicalClinic-System/assets/106792719/48a48a73-dc55-4fbf-8fe4-00fa5ad29d2b)
 
+-JDK 21 & Spring Framework 3.2.4-
