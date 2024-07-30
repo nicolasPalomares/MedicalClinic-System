@@ -9,21 +9,12 @@ This Spring application is designed to manage a medical clinic's operations. Use
 ## Key Features
 
 - Appointments Management: Create and save appointments with details including client, doctor, date, and time.
-- User Roles and Permissions:
--- Standard User: Can create, save, and view clients, doctors, and appointments.
-Administrator: Has additional privileges to manage clinic departments and specializations.
-Default Users:
-Standard user with USER role.
-Admin with both USER and ADMIN roles.
-Data Management: Users and administrators can create instances of clients, doctors, and appointments, and save them to the database. Administrators have exclusive access to manage departments and specializations.
-Internationalization (i18n): Supports English (default) and Spanish.
-Code Reusability: Reuses code from the "Student Management System" project, ensuring efficiency and consistency.
-
-June 13, 2024:
-
-The application has been updated to include Bootstrap 5.3.3
-Key features include:
-- Enhanced UI components.
+- User Roles and Permissions: Standard User can create, save, and view clients, doctors, and appointments. Administrator has additional privileges to manage clinic departments and specializations.
+- Default Users: Standard user with USER role; Admin with both USER and ADMIN roles.
+- Data Management: Users and administrators can create instances of clients, doctors, and appointments, and save them to the database. Administrators have exclusive access to manage departments and specializations.
+- Internationalization (i18n): Supports English (default) and Spanish.
+- Code Reusability: Reuses code from my "Student Management System" project, ensuring efficiency and consistency.
+- Enhanced UI components with Bootstrap 5.3.3.
 - Predefined styling classes for forms, buttons, and other UI components.
 - Responsive design.
 - Pages have been separated in sections through layout pages ('src/main/java/resources/templates/layout'), and then loaded with Thymeleaf fragments.
