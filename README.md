@@ -1,26 +1,20 @@
-# Medical Clinic System
+# Medical Clinic Management System
 
 PRECONDITION: If the user wants to execute the program, it is necessary to configure the database first. For this, I exported an SQL file
 with all the tables and data originally created from my PostgreSQL software. That file is located inside "psql_database_backup" folder inside the project directory.
 Load it inside any SQL database software, and then complete the "application.properties" file with your database credentials.
   
-This Spring application was made as a way to manage a Medical Clinic system, in wich the user can create information about clients, doctors, departments in the clinic,
-specializations and appointments, and visualize it through HTML pages. Appointments need a client, a doctor, a date and a time in order to be created and saved.
-By default, I also created two users for Spring Security: a standard user with USER role, and an admin with both USER and ADMIN roles. Creation of new users is not
-available inside the program at the moment.
-Users have the freedom to create instances of Client, Doctor and Appointment, save them to the database and visualize the respective tables. Meanwhile, the administrators
-have the addition of managing the departments and specializations in the clinic (this means that common users have no access to this information).
-Since this application shares funcionalities from previous projects of mine, a lot of the code of this project was reused from my other program, the "Student Management System".
-The program includes i18n with two languages, english (default) and spanish.
+This Spring application is designed to manage a medical clinic's operations. Users can create and manage information about clients, doctors, departments, specializations, and appointments, all viewable through user-friendly HTML pages.
 
-- JDK version: 21
-- Spring Framework version: 3.2.4
+## Key Features
 
-June 13, 2024:
-
-The application has been updated to include Bootstrap 5.3.3
-Key features include:
-- Enhanced UI components.
+- Appointments Management: Create and save appointments with details including client, doctor, date, and time.
+- User Roles and Permissions: Standard User can create, save, and view clients, doctors, and appointments. Administrator has additional privileges to manage clinic departments and specializations.
+- Default Users: Standard user with USER role; Admin with both USER and ADMIN roles.
+- Data Management: Users and administrators can create instances of clients, doctors, and appointments, and save them to the database. Administrators have exclusive access to manage departments and specializations.
+- Internationalization (i18n): Supports English (default) and Spanish.
+- Code Reusability: Reuses code from my "Student Management System" project, ensuring efficiency and consistency.
+- Enhanced UI components with Bootstrap 5.3.3.
 - Predefined styling classes for forms, buttons, and other UI components.
 - Responsive design.
 - Pages have been separated in sections through layout pages ('src/main/java/resources/templates/layout'), and then loaded with Thymeleaf fragments.
@@ -36,3 +30,4 @@ Screenshots:
 ![msedge_JMNi5Yy7zM](https://github.com/nicolasPalomares/MedicalClinic-System/assets/106792719/74b346e0-7105-40d3-b617-5162f4fd81e7)
 ![msedge_16yKpGosHl](https://github.com/nicolasPalomares/MedicalClinic-System/assets/106792719/48a48a73-dc55-4fbf-8fe4-00fa5ad29d2b)
 
+- JDK 21 & Spring Framework 3.2.4
