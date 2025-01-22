@@ -30,4 +30,4 @@ Screenshots:
 ![msedge_JMNi5Yy7zM](https://github.com/nicolasPalomares/MedicalClinic-System/assets/106792719/74b346e0-7105-40d3-b617-5162f4fd81e7)
 ![msedge_16yKpGosHl](https://github.com/nicolasPalomares/MedicalClinic-System/assets/106792719/48a48a73-dc55-4fbf-8fe4-00fa5ad29d2b)
 
- JDK 21 & Spring Framework 3.2.4
+- JDK 21 & Spring Framework 3.2.4
